@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HelpDesk</title>
+</head>
+<body>
+  <main class="helpdesk">
+    <header class="header">
+      <h1>HelpDesk</h1>
+      <button class="add-ticket" id="add-ticket">
+        Добавить тикет
+      </button>
+    </header>
+
+    <section class="tickets" id="tickets">
+      <p class="loading">Загрузка заявок...</p>
+    </section>
+  </main>
+
+  <div class="modal hidden" id="modal">
+    <div class="modal-content">
+      <h2 id="modal-title">Добавить тикет</h2>
+
+      <form id="ticket-form">
+        <label for="ticket-name">Краткое описание</label>
+        <input
+          type="text"
+          id="ticket-name"
+          name="name"
+          required
+        >
+
+        <label for="ticket-description">Подробное описание</label>
+        <textarea
+          id="ticket-description"
+          name="description"
+          rows="4"
+        ></textarea>
+
+        <div class="modal-actions">
+          <button type="submit" class="save-button">Сохранить</button>
+          <button type="button" class="cancel-button" id="cancel-modal">
+            Отмена
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
