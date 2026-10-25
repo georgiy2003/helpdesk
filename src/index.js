@@ -115,13 +115,21 @@ function openCreateModal() {
   nameInput.focus();
 }
 
-function openEditModal(ticket) {
-  editingTicketId = ticket.id;
-  modalTitle.textContent = 'Изменить тикет';
-  nameInput.value = ticket.name;
-  descriptionInput.value = ticket.description || '';
-  modal.classList.remove('hidden');
-  nameInput.focus();
+async function openEditModal(ticket) {
+  try {
+    const details = await request(`ticketById&id=${ticket.id}`);
+
+    editingTicketId = details.id;
+    modalTitle.textContent = 'Изменить тикет';
+    nameInput.value = details.name;
+    descriptionInput.value = details.description || '';
+
+    modal.classList.remove('hidden');
+    nameInput.focus();
+  } catch (error) {
+    console.error(error);
+    alert('Не удалось загрузить заявку для редактирования.');
+  }
 }
 
 function closeModal() {
